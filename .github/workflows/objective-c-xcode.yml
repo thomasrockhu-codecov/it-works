@@ -1,0 +1,22 @@
+name: Xcode - Build and Analyze
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    name: Build and analyse default scheme using xcodebuild command
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Build
+        run: |
+          xcodebuild -workspace It-works.xcodeproj/project.xcworkspace -scheme "It-works (iOS)" -destination id=09CC6E6D-0C43-4B18-8AEC-FCEE2E5F5E88 -enableCodeCoverage YES test
+      - name: Upload to Codecov with bash uploader
+        run: |
+          bash <(curl -s https://codecov.io/bash)
