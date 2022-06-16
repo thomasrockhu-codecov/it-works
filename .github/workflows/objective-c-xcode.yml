@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Display availiable destinations
         run: |
-          xcodebuild -workspace It-works.xcodeproj/project.xcworkspace -scheme "It-works (iOS)" -listdestinations
+          xcodebuild -workspace It-works.xcodeproj/project.xcworkspace -scheme "It-works (iOS)" -showdestinations
       - name: Build
         run: |
           xcodebuild -workspace It-works.xcodeproj/project.xcworkspace -scheme "It-works (iOS)" -destination id=09CC6E6D-0C43-4B18-8AEC-FCEE2E5F5E88 -enableCodeCoverage YES test
