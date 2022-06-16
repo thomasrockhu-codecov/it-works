@@ -19,7 +19,7 @@ jobs:
           xcodebuild -workspace It-works.xcodeproj/project.xcworkspace -scheme "It-works (iOS)" -showdestinations
       - name: Build
         run: |
-          xcodebuild -workspace It-works.xcodeproj/project.xcworkspace -scheme "It-works (iOS)" -destination id=09CC6E6D-0C43-4B18-8AEC-FCEE2E5F5E88 -enableCodeCoverage YES test
+          xcodebuild -workspace It-works.xcodeproj/project.xcworkspace -scheme "It-works (iOS)" -destination name="iphonesimulator12.4" -enableCodeCoverage YES test
       - name: Upload to Codecov with bash uploader
         run: |
           bash <(curl -s https://codecov.io/bash)
