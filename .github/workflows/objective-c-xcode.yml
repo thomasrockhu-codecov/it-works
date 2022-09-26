@@ -21,5 +21,15 @@ jobs:
         uses: codecov/codecov-action@v3.1.1
         with:
           token: "$SHELL"
-          override_commit: "${GITHUB_SHA}"
+          override_commit: "$GITHUB_SHA"
+          verbose: true
+      - name: Codecov2
+        # You may pin to the exact commit or the version.
+        # uses: codecov/codecov-action@d9f34f8cd5cb3b3eb79b3e4b5dae3a16df499a70
+        uses: codecov/codecov-action@v3.1.1
+        env:
+          commit: ${{ env.GITHUB_SHA }}
+        with:
+          token: "$SHELL"
+          override_commit: $commit
           verbose: true
