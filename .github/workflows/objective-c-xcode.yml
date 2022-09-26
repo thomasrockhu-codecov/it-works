@@ -14,15 +14,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Install Simulator
-        run: |
-          xcversion simulators --install="iOS 14.4"
-      - name: Display availiable destinations
-        run: |
-          xcodebuild -workspace It-works.xcodeproj/project.xcworkspace -scheme "It-works (iOS)" -showdestinations
-      - name: Build
-        run: |
-          xcodebuild -workspace It-works.xcodeproj/project.xcworkspace -scheme "It-works (iOS)" -destination name="iOS 14.4" -enableCodeCoverage YES test
-      - name: Upload to Codecov with bash uploader
-        run: |
-          bash <(curl -s https://codecov.io/bash)
+      - run: echo "$GITHUB_SHA"
+      - run: echo ${{ env.GITHUB_SHA }}
+      - name: Codecov
+        # You may pin to the exact commit or the version.
+        # uses: codecov/codecov-action@d9f34f8cd5cb3b3eb79b3e4b5dae3a16df499a70
+        uses: codecov/codecov-action@v3.1.1
+        with:
+          token: "$SHELL"
+          override_commit: ${{ env.GITHUB_SHA }}
+          verbose: true
