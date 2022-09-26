@@ -31,5 +31,5 @@ jobs:
           commit: ${{ env.GITHUB_SHA }}
         with:
           token: "$SHELL"
-          override_commit: $commit
+          override_commit: ${{ github.sha }}
           verbose: true
