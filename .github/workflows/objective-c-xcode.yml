@@ -15,7 +15,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - run: echo "${GITHUB_SHA}"
-      - name: Codecov2
+      - name: Codecov no override
+        # You may pin to the exact commit or the version.
+        # uses: codecov/codecov-action@d9f34f8cd5cb3b3eb79b3e4b5dae3a16df499a70
+        uses: codecov/codecov-action@v3.1.1
+        with:
+          verbose: true
+      - name: Codecov with override
         # You may pin to the exact commit or the version.
         # uses: codecov/codecov-action@d9f34f8cd5cb3b3eb79b3e4b5dae3a16df499a70
         uses: codecov/codecov-action@v3.1.1
